@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	    <title>National Early Warning Score Wales (NEWS) v0.01 </title>
+
+
+
+		<style>
+
+        .Warning  {
+		           background:transparent; 
+				   width:660px; 
+				   height:40px;
+				   }
+        
+        .SmallButton  {
+				width:50px; 
+				height:38px;
+				padding-top:2px;
+				font:16 pt arial bold;
+				color:white;
+				background-color:blue;
+				text-align:center;
+				line-height: 2.5;
+				display: inline-block;
+				vertical-align: middle;
+}
+
+        
+			 body {
+			    background-color:darkblue;
+				}
+				
+			div {
+			  text-align: center;
+    			height:95%;
+				padding-top:2px;
+				font:14 pt arial;
+				color:white;
+
+			}					
+			#matrix {
+			  border: 1px solid red;
+			  margin: 0 auto;
+			  padding: 5px;
+			}
+			#matrix tr, td {
+			  padding: 5px;
+			}
+			 #matrix thead {
+				 padding-top:2px;
+				 font:14 pt arial;`
+				 color:white;
+				 text-align:center
+			 }
+			#matrix button {
+			  height: 40px;
+			  width: 100px;
+			  border: none;
+			  font-family: helvetica;
+			  font-weight: bold;
+			}
+
+			#b82  {
+			  background-color:transparent;
+			}
+
+			#b01, #b07, #b11, #b17, #b21, #b27, #b31, #b37, #b41, #b47, #b51, #b57, #b61, #b67, #b71, #b77  {
+			  background-color:red;
+			}
+
+			#b01:hover, #b07:hover, #b11:hover, #b21:hover, #b27:hover, #b41:hover, #b47:hover, #b51:hover, #b57:hover, #b67:hover, #b71:hover  {
+			  background-color:pink;
+			}
+			
+			#b01:active, #b07:active, #b11:active, #b21:active, #b27:active, #b41:active, #b47:active, #b51:active, #b57:active, #b67:active, #b71:active  {
+			  background-color:black;
+			}
+			
+			#b02, #b06, #b12, #b16, #b22, #b26, #b32, #b36, #b42, #b46, #b52, #b56, #b62, #b66, #b72, #b76  {
+			  background-color:orange;
+			}
+
+			#b06:hover, #b12:hover, #b22:hover, #b26:hover, #b32:hover, #b42:hover,  #b56:hover, #b76:hover  {
+			  background-color:salmon;
+			}
+
+			#b03, #b05, #b13, #b15, #b23, #b25, #b33, #b35, #b43, #b45, #b53, #b55, #b63, #b65, #b73, #b75  {
+			  background-color:lightblue;
+			}
+
+			#b03:hover, #b13:hover, #b23:hover, #b25:hover, #b43:hover,  #b53:hover, #b55:hover, #b73:hover, #b75:hover  {
+			  background-color:blue;
+			}
+
+			#b04:hover, #b14:hover, #b24:hover, #b34:hover, #b44:hover, #b54:hover, #b64:hover, #b74:hover, #reset:hover {
+			  background-color:blue;
+			}
+
+
+			.row-heaader {
+				  padding-top:2px;
+				  font:16 pt arial bold;
+				  color:white;
+				  background-color:blue;
+				  text-align:center;
+				  width:50px;
+				  }
+
+			.col-heaader {
+				  padding-top:2px;
+				  font:14 pt arial;
+				  color:white;
+				  background-color:blue;
+				  text-align:center;
+				  }
+
+			.row-descriptor {
+				  padding-top:2px;
+				  font:14 pt arial;
+				  color:white;
+				  background-color:lightblue;
+				  text-align:center
+				  }
+
+			#b08, #b18, #b28, #b38, #b48, #b58, #b68, #b78, #b88, #b98 {
+				  padding-top:2px;
+				  font:14 pt arial;
+				  color:black;
+				  text-align:center;
+				  background-color:lightgreen;
+				  }
+
+				  
+
+		</style> 
+
+		
+		<script type = "text/javascript">
+        
+		function ButtonClick(x) {
+		//=======================
+		    var res = x.split(",");
+			
+			document.getElementById(res[1]).innerHTML = res[2];
+			
+			
+				switch (res[1]) {
+					case 'b08': {
+						document.getElementById('b01').style.background = 'red';
+						document.getElementById('b07').style.background = 'red';
+						document.getElementById('b02').style.background = 'orange';
+						document.getElementById('b06').style.background = 'orange';
+						document.getElementById('b03').style.background = 'lightblue';
+						document.getElementById('b05').style.background = 'lightblue';
+						document.getElementById('b04').style.background = 'white';
+						document.getElementById('b08').style.background = 'green';
+						break;
+						}
+					case 'b18': {
+						document.getElementById('b11').style.background = 'red';
+						document.getElementById('b17').style.background = 'red';
+						document.getElementById('b12').style.background = 'orange';
+						document.getElementById('b16').style.background = 'orange';
+						document.getElementById('b13').style.background = 'lightblue';
+						document.getElementById('b15').style.background = 'lightblue';
+						document.getElementById('b14').style.background = 'white';
+						document.getElementById('b18').style.background = 'green';
+						break;
+						}
+					case 'b38': {
+						document.getElementById('b31').style.background = 'red';
+						document.getElementById('b37').style.background = 'red';
+						document.getElementById('b32').style.background = 'orange';
+						document.getElementById('b36').style.background = 'orange';
+						document.getElementById('b33').style.background = 'lightblue';
+						document.getElementById('b35').style.background = 'lightblue';
+						document.getElementById('b34').style.background = 'white';
+						document.getElementById('b38').style.background = 'green';
+						break;
+						}
+					case 'b48': {
+						document.getElementById('b41').style.background = 'red';
+						document.getElementById('b47').style.background = 'red';
+						document.getElementById('b42').style.background = 'orange';
+						document.getElementById('b46').style.background = 'orange';
+						document.getElementById('b43').style.background = 'lightblue';
+						document.getElementById('b45').style.background = 'lightblue';
+						document.getElementById('b44').style.background = 'white';
+						document.getElementById('b48').style.background = 'green';
+						break;
+						}
+					case 'b58': {
+						document.getElementById('b51').style.background = 'red';
+						document.getElementById('b57').style.background = 'red';
+						document.getElementById('b52').style.background = 'orange';
+						document.getElementById('b56').style.background = 'orange';
+						document.getElementById('b53').style.background = 'lightblue';
+						document.getElementById('b55').style.background = 'lightblue';
+						document.getElementById('b54').style.background = 'white';
+						document.getElementById('b58').style.background = 'green';
+						break;
+						}
+					case 'b68': {
+						document.getElementById('b61').style.background = 'red';
+						document.getElementById('b67').style.background = 'red';
+						document.getElementById('b62').style.background = 'orange';
+						document.getElementById('b66').style.background = 'orange';
+						document.getElementById('b63').style.background = 'lightblue';
+						document.getElementById('b65').style.background = 'lightblue';
+						document.getElementById('b64').style.background = 'white';
+						document.getElementById('b68').style.background = 'green';
+						break;
+						}
+					case 'b78': {
+						document.getElementById('b71').style.background = 'red';
+						document.getElementById('b77').style.background = 'red';
+						document.getElementById('b72').style.background = 'orange';
+						document.getElementById('b76').style.background = 'orange';
+						document.getElementById('b73').style.background = 'lightblue';
+						document.getElementById('b75').style.background = 'lightblue';
+						document.getElementById('b74').style.background = 'white';
+						document.getElementById('b78').style.background = 'green';
+						}
+		}
+			document.getElementById(res[0]).style.background = 'green';
+			NEWSCalc();
+        }
+;
+		function ButtonReset() {
+			location.reload(); 
+		}
+
+		function NEWSCalc() {
+		    var value = parseInt(document.getElementById('b08').innerHTML);
+		    value = value + parseInt(document.getElementById('b18').innerHTML);
+		    value = value + parseInt(document.getElementById('b38').innerHTML);
+		    value = value + parseInt(document.getElementById('b48').innerHTML);
+		    value = value + parseInt(document.getElementById('b58').innerHTML);
+		    value = value + parseInt(document.getElementById('b68').innerHTML);
+		    value = value + parseInt(document.getElementById('b78').innerHTML);
+			document.getElementById('b98').innerHTML = value;
+			
+			switch (value) {
+			    default:  
+					document.getElementById('b82').innerhtml="9 = NOW</br>Immediately life threatening critical illness";
+         			document.getElementById('b82').style.background = 'RED';
+         			document.getElementById('b98').style.background = 'RED';
+					document.getElementById('b82').innerHTML="9 = NOW</br>Immediately life threatening critical illness";
+					break;
+				case 0:
+				case 1:
+				case 2: 
+					document.getElementById('b82').innerHTML="&nbsp;";
+         			document.getElementById('b82').style.background = 'lightgreen';
+         			document.getElementById('b98').style.background = 'lightgreen';
+					break;
+				case 3:
+				case 4:
+				case 5: 
+					document.getElementById('b82').innerHTML="3 = THREAT</br>Acute illness or unstable chronic disease?";
+         			document.getElementById('b82').style.background = 'pink';
+         			document.getElementById('b98').style.background = 'pink';
+					break;
+				case 6:
+				case 7:
+				case 8: 
+					document.getElementById('b82').innerHTML="6 = SICK</br>Likly to deteriorate rapidly";
+					document.getElementById('b82').style.background = 'orange';
+         			document.getElementById('b98').style.background = 'orange';
+			};
+		}
+
+
+
+
+</script>
+	  
+		</head>
+<body>
+
+<br />
+
+<!--Add your controls here-->
+
+<!--{{InsertControlsHere}}-Do not remove this line-->
+<div>
+  <table id="matrix">
+      <thead>
+		<tr>
+		  <td colspan = "2" class="col-heaader">Physiological parameter</td>
+          <td><button disabled class="col-heaader">3</button></td>
+          <td><button disabled class="col-heaader">2</button></td>
+          <td><button disabled class="col-heaader">1</button></td>
+          <td><button disabled class="col-heaader">0</button></td>
+          <td><button disabled class="col-heaader">1</button></td>
+          <td><button disabled class="col-heaader">2</button></td>
+          <td><button disabled class="col-heaader">3</button></td>
+        <td><div class="SmallButton">&nbsp;</div></td>
+
+        </tr>
+		</thead>
+
+    <tr>
+      <td><div class="SmallButton">A</div></td>
+      <td><button class="row-descriptor">Respiration rate</br>(bpm)</button></td>
+      <td><button          id="b01" onclick="ButtonClick('b01,b08,3')">&#8804; 8</button></td>
+      <td><button disabled id="b02"                                   >&nbsp;</button></td>
+      <td><button          id="b03" onclick="ButtonClick('b03,b08,1')">9-11</button></td>
+      <td><button          id="b04" onclick="ButtonClick('b04,b08,0')">12-20 </button></td>
+      <td><button disabled id="b05"                                   >&nbsp;</button></td>
+      <td><button          id="b06" onclick="ButtonClick('b06,b08,2')">21-24</button></td>
+      <td><button          id="b07" onclick="ButtonClick('b07,b08,3')">&#8805; 25</button></td>
+      <td><div  id="b08" class="SmallButton">0</div></td>
+    </tr>
+  
+    <tr>
+      <td><div class="SmallButton">B</div></td>
+      <td><button class="row-descriptor">O2 Saturations</br>(%)</button></td>
+      <td><button          id="b11" onclick="ButtonClick('b11,b18,3')">&#8804; 91</button></td>
+      <td><button          id="b12" onclick="ButtonClick('b12,b18,2')">92-93</button></td>
+      <td><button          id="b13" onclick="ButtonClick('b13,b18,1')">94-95</button></td>
+      <td><button          id="b14" onclick="ButtonClick('b14,b18,0')">&#8805;96</button></td>
+      <td><button disabled id="b15"                                    >&nbsp;</button></td>
+      <td><button disabled id="b16"                                    >&nbsp;</button></td>
+      <td><button disabled id="b17"                                    >&nbsp;</button></td>
+      <td><div  id="b18" class="SmallButton">0</div></td>
+    </tr>
+
+
+    <tr>
+      <td><div class="SmallButton">&nbsp;</div></td>
+      <td><button class="row-descriptor">Supplemental</br>Oxygen</button></td>
+      <td><button disabled id="b31" onclick="ButtonClick('b31,b38,3')">&nbsp;</button></td>
+      <td><button          id="b32" onclick="ButtonClick('b32,b38,2')">Yes</button></td>
+      <td><button disabled id="b33" onclick="ButtonClick('b33,b38,1')">&nbsp;</button></td>
+      <td><button          id="b34" onclick="ButtonClick('b34,b38,0')">None</button></td>
+      <td><button disabled id="b35" onclick="ButtonClick('b35,b38,1')">&nbsp;</button></td>
+      <td><button disabled id="b36" onclick="ButtonClick('b36,b38,2')">&nbsp;</button></td>
+      <td><button disabled id="b37" onclick="ButtonClick('b37,b38,3')">&nbsp;</button></td>
+      <td><div  id="b38" class="SmallButton">0</div></td>
+    </tr>
+  
+    <tr>
+      <td><div class="SmallButton">C</div></td>
+      <td><button class="row-descriptor">Systolic BP</br>(mmHg)</button></td>
+      <td><button          id="b41" onclick="ButtonClick('b41,b48,3')">&#8804;90</button></td>
+      <td><button          id="b42" onclick="ButtonClick('b42,b48,2')">91-100</button></td>
+      <td><button          id="b43" onclick="ButtonClick('b43,b48,1')">101-110</button></td>
+      <td><button          id="b44" onclick="ButtonClick('b44,b48,0')">111-219</button></td>
+      <td><button disabled id="b45" onclick="ButtonClick('b45,b48,1')">&nbsp;</button></td>
+      <td><button disabled id="b46" onclick="ButtonClick('b46,b48,2')">&nbsp;</button></td>
+      <td><button          id="b47" onclick="ButtonClick('b47,b48,3')">&#8805;220</button></td>
+      <td><div  id="b48" class="SmallButton">0</div></td>
+    </tr>
+  
+    <tr>
+      <td><div class="SmallButton">&nbsp;</div></td>
+      <td><button class="row-descriptor">Pulse (bpm)</button></td>
+      <td><button          id="b51" onclick="ButtonClick('b51,b58,3')">&#8804;40</button></td>
+      <td><button disabled id="b52" onclick="ButtonClick('b52,b58,2')">&nbsp;</button></td>
+      <td><button          id="b53" onclick="ButtonClick('b53,b58,1')">41-50</button></td>
+      <td><button          id="b54" onclick="ButtonClick('b54,b58,0')">51-90</button></td>
+      <td><button          id="b55" onclick="ButtonClick('b55,b58,1')">91-110</button></td>
+      <td><button          id="b56" onclick="ButtonClick('b56,b58,2')">111-130</button></td>
+      <td><button          id="b57" onclick="ButtonClick('b57,b58,3')">&#8805;131</button></td>
+      <td><div  id="b58" class="SmallButton">0</div></td>
+    </tr>
+
+    <tr>
+      <td><div class="SmallButton">D</div></td>
+      <td><button class="row-descriptor">AVPU Score</button></td>
+      <td><button disabled id="b61" onclick="ButtonClick('b61,b68,3')">&nbsp;</button></td>
+      <td><button disabled id="b62" onclick="ButtonClick('b62,b68,2')">&nbsp;</button></td>
+      <td><button disabled id="b63" onclick="ButtonClick('b63,b68,1')">&nbsp;</button></td>
+      <td><button          id="b64" onclick="ButtonClick('b64,b68,0')">Alert</button></td>
+      <td><button disabled id="b65" onclick="ButtonClick('b65,b68,1')">&nbsp;</button></td>
+      <td><button disabled id="b66" onclick="ButtonClick('b66,b68,2')">&nbsp;</button></td>
+      <td><button          id="b67" onclick="ButtonClick('b67,b68,3')">VPU</button></td>
+      <td><div  id="b68" class="SmallButton">0</div></td>
+    </tr>
+  
+    <tr>
+      <td><div class="SmallButton">E</div></td>
+      <td><button class="row-descriptor">Temperature</br>('C)</button></td>
+      <td><button          id="b71" onclick="ButtonClick('b71,b78,3')">&#8804;35.0</button></td>
+      <td><button disabled id="b72" onclick="ButtonClick('b72,b78,2')">&nbsp;</button></td>
+      <td><button          id="b73" onclick="ButtonClick('b73,b78,1')">35.1-36.0</button></td>
+      <td><button          id="b74" onclick="ButtonClick('b74,b78,0')">36.1-38.0</button></td>
+      <td><button          id="b75" onclick="ButtonClick('b75,b78,1')">38.1-39.0</button></td>
+      <td><button          id="b76" onclick="ButtonClick('b76,b78,2')">&#8805;39.1</button></td>
+      <td><button disabled id="b77" onclick="ButtonClick('b77,b78,3')">&nbsp;</button></td>
+      <td><div  id="b78" class="SmallButton">0</div></td>
+    </tr>
+  
+    <tr>
+      <td><div class="SmallButton">&nbsp;</div></td>
+      <td><button class="row-descriptor">NEWS Score</button></td>
+      <td><button          id="reset" onclick = "ButtonReset()">Reset</button></td>
+      <td colspan="6"><div class="Warning" id="b82"></div> </td>
+      <td><div  id="b98" class="SmallButton">0</div></td>
+	  
+    </tr>
+  
+
+	</table>
+                    
+</div>
+</body>
+</html>
